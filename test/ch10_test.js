@@ -75,13 +75,13 @@ describe("Chapter 10 Questions", function () {
   describe("10.2 #isSymmetric", function(){
     let a = new TreeNode(10);
     let b = new TreeNode(6);
-    let c = new TreeNode(15);
+    let c = new TreeNode(6);
     let d = new TreeNode(5);
     let e = new TreeNode(7);
-    let f = new TreeNode(8);
-    let g = new TreeNode(9);
-    let h = new TreeNode(2);
-    let i = new TreeNode(3);
+    let f = new TreeNode(7);
+    let g = new TreeNode(5);
+    let h = new TreeNode(9);
+    let i = new TreeNode(9);
 
     a.left = b;
     a.right = c;
@@ -99,5 +99,13 @@ describe("Chapter 10 Questions", function () {
     it("returns false for an ubalanced tree", function(){
       expect(isSymmetric(b)).to.be.false;
     });
+
+    
+    it("returns false for a structurally symmetric tree with differnt values", function(){
+      let j = new TreeNode(10);
+      g.right = j;
+      expect(isSymmetric(a)).to.be.false;
+    });
+
   });
 });
