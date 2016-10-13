@@ -1,7 +1,8 @@
 import { TreeNode } from '../util/tree.js';
 import { expect } from 'chai';
 import { checkBalance,
-         leastCommonAncestor } from '../lib/ch09.js';
+  leastCommonAncestor, 
+  isSymmetric } from '../lib/ch10.js';
 
 describe("Chapter 10 Questions", function () {
 
@@ -16,7 +17,7 @@ describe("Chapter 10 Questions", function () {
       b.right = c;
 
       let result = checkBalance(a);
-      expect(result).to.be.false;
+      expect(result).to.be(false);
     });
 
     it("returns true for a balanced tree", function () {
@@ -27,14 +28,14 @@ describe("Chapter 10 Questions", function () {
       let e = new TreeNode(7);
       let f = new TreeNode(8);
 
-      a.left = b
-      a.right = c
-      b.left = d
-      b.right = e
-      c.left = f
+      a.left = b;
+      a.right = c;
+      b.left = d;
+      b.right = e;
+      c.left = f;
 
       let result = checkBalance(a);
-      expect(result).to.be.true;
+      expect(result).to.be(true);
     });
 
   });
@@ -71,4 +72,32 @@ describe("Chapter 10 Questions", function () {
 
   });
 
+  describe("10.2 #isSymmetric", function(){
+    let a = new TreeNode(10);
+    let b = new TreeNode(6);
+    let c = new TreeNode(15);
+    let d = new TreeNode(5);
+    let e = new TreeNode(7);
+    let f = new TreeNode(8);
+    let g = new TreeNode(9);
+    let h = new TreeNode(2);
+    let i = new TreeNode(3);
+
+    a.left = b;
+    a.right = c;
+    b.left = d;
+    b.right = e;
+    c.left = f;
+    c.right = g;
+    d.left = h;
+    g.right = i;
+
+    it("returns true for a balanced tree", function(){
+      expect(isSymmetric(a)).to.be.true;
+    });
+  
+    it("returns false for an ubalanced tree", function(){
+      expect(isSymmetric(b)).to.be.false;
+    });
+  });
 });

@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { mergeLists, reverseSublist } from '../lib/ch08.js';
+import { mergeLists, reverseSublist, areConverging } from '../lib/ch08.js';
 import { Link, LinkedList } from '../util/list.js';
 
 describe("Chapter 8 Question", function () {
@@ -45,7 +45,6 @@ describe("Chapter 8 Question", function () {
       list.push(5);
       list.push(6);
       list.push(7);
-
     });
 
    it("does not change the count of the list", function () {
@@ -68,5 +67,39 @@ describe("Chapter 8 Question", function () {
      expect(list.tail.prev.prev.prev.value).to.equal(4);
    });
   });
+  
+  describe("8.4 #areConverging", function(){
+    let list;
+    let list2;
+    let list3;
+    
+    beforeEach(function() {
+      list = new LinkedList();
+      list.push(1);
+      list.push(2);
+      list.push(3);
+      list.push(4);
+      list.push(5);
+      list.push(6);
+      list.push(7);
 
+      list2 = new LinkedList();
+      list2.push(1);
+      list2.push(2);
+      list2.push(3);
+  
+      list3 = new LinkedList();
+      list3.push(1);
+      list3.push(2);
+      
+      list2.tail.prevLink.nextLink = list.head.next.nextLink;
+    });
+    it('returns true for linked lists that share nodes', function(){
+      expect(areConverging(list, list2)).to.equal(true);
+    });
+
+    it('returns false for non-overlapping lists', function(){
+      expect(areConverging(list, list3)).to.equal(false);
+    });
+  });
 });
