@@ -1,8 +1,11 @@
 import { TreeNode } from '../util/tree.js';
 import { expect } from 'chai';
-import { checkBalance,
+import { 
+  checkBalance,
   leastCommonAncestor, 
-  isSymmetric } from '../lib/ch10.js';
+  isSymmetric,
+  constructTree 
+  } from '../lib/ch10.js';
 
 describe("Chapter 10 Questions", function () {
 
@@ -108,4 +111,28 @@ describe("Chapter 10 Questions", function () {
     });
 
   });
+
+  describe("10.12 #constructTree", function(){
+    it("correctly constructs a tree", function(){
+      let a = constructTree([4,2,1,3], [1,2,4,3]);
+      expect(a.val).to.equal(1);
+      expect(a.left.val).to.equal(2);
+      expect(a.right.val).to.equal(3);
+      expect(a.left.left.val).to.equal(4);
+      });
+
+
+    it("correctly constructs case 2", function(){
+      let a = constructTree([6,2,7,1,4,3,5], [1,2,6,7,3,4,5]);
+      expect(a.val).to.equal(1);
+      expect(a.left.val).to.equal(2);
+      expect(a.left.left.val).to.equal(6);
+      expect(a.left.right.val).to.equal(7);
+      expect(a.right.val).to.equal(3);
+      expect(a.right.left.val).to.equal(4);
+      expect(a.right.right.val).to.equal(5);
+    });
+  });
+
 });
+
