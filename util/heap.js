@@ -28,7 +28,7 @@ export class Heap {
     }
     let lastIdx = this.store.length - 1;
     [this.store[0], this.store[lastIdx]] = [this.store[lastIdx], this.store[0]];
-    let returnElement = this.store.pop;
+    let returnElement = this.store.pop();
     this._heapifyDown();
     return returnElement;
   }

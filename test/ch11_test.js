@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import {sortedArrSort, kthLargest} from '../lib/ch11.js';
+import {sortedArrSort, kthLargest, almostSorted} from '../lib/ch11.js';
 
 describe("Chapter 11 Questions", () => {
 
@@ -33,4 +33,11 @@ describe("Chapter 11 Questions", () => {
 
  });
 
+});
+
+describe("11.3: #almostSorted", () => {
+  it('sorts an almost sorted array', () => {
+    let res = almostSorted([3,-1,2,6,4,5,8], 2);
+    expect(res).to.equal([-1,2,3,4,5,6,8]);
+  });
 });

@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { firstOccurrence, closestRoot,
-        kthLargestInPlace } from '../lib/ch12.js';
+        kthLargestInPlace, searchCycleSorted} from '../lib/ch12.js';
 import { shuffle } from '../util/shuffle.js';
 
 describe("Chapter 12 Questions", () => {
@@ -66,5 +66,20 @@ describe("Chapter 12 Questions", () => {
     });
 
   });
+  
+  describe("12.2 #searchCycleSorted", () => {
+    it("finds the index of the min when the min is on the left", () => {
+      expect(searchCycleSorted([8,9,1,2,3,4,5,6,7])).to.equal(2);
+    });
+    it("finds the index of the min when the min is on the right", () => {
+      expect(searchCycleSorted([3,4,5,6,7,8,1,2])).to.equal(6);
+    });
 
+    it("finds the index of the min when the min is first", () => {
+      expect(searchCycleSorted([1,2,3,4,5,6,7,8])).to.equal(0);
+    });
+    it("finds the index of the min when the min is last", () => {
+      expect(searchCycleSorted([1,2,3,4,5,6,7,8,0])).to.equal(8);
+    });
+  });
 });
