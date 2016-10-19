@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { intersection, mergeSorted } from '../lib/ch14.js';
+import { intersection, mergeSorted, concurrentEvents } from '../lib/ch14.js';
 
 describe("Chapter 14 Questions", () => {
 
@@ -25,4 +25,15 @@ describe("Chapter 14 Questions", () => {
 
   });
 
+});
+
+describe('#concurrentEvents', () => {
+  it("returns 1 if there are no concurrent events", function(){
+    let events = [[1,2],[4,5]];
+    expect(concurrentEvents(events)).to.equal(1);
+  });
+  it("returns the correct value when there are overlapping events", function(){
+    let events = [[1,7],[4,7], [4,6], [9,10]];
+    expect(concurrentEvents(events)).to.equal(3);
+  });
 });
